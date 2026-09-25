@@ -1,3 +1,5 @@
+> ⚠️ **本仓库已废弃**：内容已并入 [agent-deploy](https://github.com/hpsks416/agent-deploy) 的 skills/skill-optimizer/ 子目录，请以 agent-deploy 为准。本仓库保留仅供历史归档。
+
 # skill-optimizer
 
 轻量版 SkillOpt：把「skill 文档当可训练参数」，用 rollout→reflect→edit→gate 四步循环自动改进一个 skill 的正文。核心是**用验证门控防过拟合**——只有能通过留出验证集的改进才被接受。产出永远是 `_draft`，人类终审。
@@ -26,3 +28,4 @@
 ## License
 
 MIT License. See [LICENSE](LICENSE).
+
