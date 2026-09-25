@@ -1,23 +1,11 @@
 # skill-optimizer
 
-Optimize an existing skill's SKILL.md through a rollout→reflect→edit→gate loop, using the skill's own evals as the score signal and a held-out gate set to prevent overfitting. Use when a skill scored as dead weight or negative by skill-evaluator, or when the user asks to improve, tune, or auto-fix a skill. Not for creating new skills or one-off edits.
+轻量版 SkillOpt：把「skill 文档当可训练参数」，用 rollout→reflect→edit→gate 四步循环自动改进一个 skill 的正文。核心是**用验证门控防过拟合**——只有能通过留出验证集的改进才被接受。产出永远是 `_draft`，人类终审。
 
-## 这是什么
+## 适用对象
 
-DSH（DeepSeek Harness）skill —— 一个可由 AI agent 按需自动加载的能力单元。克隆到 skill 目录后，DSH 会依据上方描述自动发现并触发它，无需构建。
-
-## 安装
-
-最简单：用 [dsh-config](https://github.com/hpsks416/dsh-config) 的一键脚本 `install.ps1` 批量安装全部 skill。单个安装：
-
-    # GitHub
-    git clone https://github.com/hpsks416/skill-optimizer.git "$env:USERPROFILE\.dsh\skills\skill-optimizer"
-    # 或 Gitee（国内直连更快）
-    git clone https://gitee.com/hpsks416/skill-optimizer.git "$env:USERPROFILE\.dsh\skills\skill-optimizer"
-
-克隆后 DSH 会自动重新发现，无需重启。更新用：
-
-    git -C "$env:USERPROFILE\.dsh\skills\skill-optimizer" pull
+- DeepSeek Harness（DSH）用户：一个可由 AI agent 按需自动加载的 skill，克隆即用、无需构建。
+- 需要自动优化 skill 正文（防过拟合）的人
 
 ## 目录结构
 
@@ -25,9 +13,14 @@ DSH（DeepSeek Harness）skill —— 一个可由 AI agent 按需自动加载�
     ├── SKILL.md    技能入口与工作流
     ├── evals.yaml
 
-## 依赖
+## 安装
 
-无运行时依赖，纯指令型 skill（由 agent 直接执行 Markdown 工作流）。
+    # GitHub
+    git clone https://github.com/hpsks416/skill-optimizer.git "$env:USERPROFILE\.dsh\skills\skill-optimizer"
+    # 或 Gitee（国内直连）
+    git clone https://gitee.com/hpsks416/skill-optimizer.git "$env:USERPROFILE\.dsh\skills\skill-optimizer"
+
+克隆后 DSH 自动重新发现，无需构建。
 
 ## License
 
